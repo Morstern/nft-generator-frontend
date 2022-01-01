@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LayerService } from 'src/app/services/upload-section/layer/layer.service';
-import { Layer } from 'src/app/common/tos/layer';
+import { LayerService } from '@services/upload-section/layer/layer.service';
+import { Layer } from 'app/common/tos/layer';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 
 @Component({

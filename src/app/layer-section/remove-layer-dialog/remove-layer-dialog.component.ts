@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LayerService } from 'src/app/services/upload-section/layer/layer.service';
+import { LayerService } from '@services/upload-section/layer/layer.service';
 
 @Component({
   selector: 'app-remove-layer-dialog',

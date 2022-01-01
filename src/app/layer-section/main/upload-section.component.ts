@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LayerService } from 'src/app/services/upload-section/layer/layer.service';
+import { LayerService } from '@services/upload-section/layer/layer.service';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Layer } from 'src/app/common/tos/layer';
+import { Layer } from 'app/common/tos/layer';
 
 @Component({
   selector: 'app-upload-section',
