@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 
@@ -12,7 +11,7 @@ export class LayerComponent implements OnInit {
   @Input()
   layer: Layer;
 
-  constructor(public dialog: MatDialog, private layerService: LayerService) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 

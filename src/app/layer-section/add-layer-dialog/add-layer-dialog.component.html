@@ -1,13 +1,24 @@
 <h1 mat-dialog-title>Add layer</h1>
-<div mat-dialog-content>
+<div mat-dialog-content class="add-layer-dialog">
   <mat-form-field appearance="fill">
     <mat-label>Name of layer</mat-label>
     <input matInput [(ngModel)]="newLayer" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">Cancel</button>
-  <button mat-button (click)="addLayerAndCloseDialog()" cdkFocusInitial>
+  <button
+    mat-button
+    (click)="closeDialog()"
+    class="add-layer-dialog__cancel-button"
+  >
+    Cancel
+  </button>
+  <button
+    mat-button
+    (click)="addLayerAndCloseDialog()"
+    class="add-layer-dialog__add-button"
+    cdkFocusInitial
+  >
     Add
   </button>
 </div>
