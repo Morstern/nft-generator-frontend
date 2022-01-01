@@ -6,9 +6,10 @@ import { AddLayerDialogComponent } from './add-layer-dialog/add-layer-dialog.com
 import { AngularMaterialModule } from '../common/angular-material.module';
 import { FormsModule } from '@angular/forms';
 import { LayerComponent } from './layer/layer.component';
+import { RemoveLayerDialogComponent } from './remove-layer-dialog/remove-layer-dialog.component';
 
 @NgModule({
-  declarations: [UploadSectionComponent, AddLayerDialogComponent, LayerComponent],
+  declarations: [UploadSectionComponent, AddLayerDialogComponent, LayerComponent, RemoveLayerDialogComponent],
   imports: [CommonModule, AngularMaterialModule, FormsModule],
   exports: [UploadSectionComponent],
 })

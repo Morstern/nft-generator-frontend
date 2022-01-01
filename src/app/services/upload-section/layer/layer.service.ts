@@ -25,7 +25,6 @@ export class LayerService {
   }
 
   removeLayer(layerToRemove: Layer) {
-    console.log(layerToRemove);
     this._layers$.next(
       this.layers.filter((layer) => layerToRemove.layerName != layer.layerName)
     );

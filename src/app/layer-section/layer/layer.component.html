@@ -1,8 +1,13 @@
 <mat-expansion-panel hideToggle>
   <mat-expansion-panel-header>
     <mat-panel-title> {{ layer.layerName }} </mat-panel-title>
-    <button mat-raised-button color="warn" (click)="removeLayer()" class="layer__delete-button">
-      Usuń warstwę<mat-icon>delete</mat-icon>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="openRemoveLayerDialog($event)"
+      class="layer__delete-button"
+    >
+      Delete layer <mat-icon>delete</mat-icon>
     </button>
   </mat-expansion-panel-header>
   <div *ngFor="let item of [].constructor(10); let i = index">

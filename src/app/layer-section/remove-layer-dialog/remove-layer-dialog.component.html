@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Remove layer</h1>
+<div mat-dialog-content class="mat-typography">
+  <p>
+    Are you sure that you want to remove layer named:
+    <b>{{ this.data.layer.layerName }}</b>
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button (click)="removeLayerAndCloseDialog()" cdkFocusInitial>
+    Remove
+  </button>
+</div>
