@@ -75,6 +75,8 @@ app-layer mat-expansion-panel {
   width: 100%;
 }
 
-button {
-  background-color: $teritary-3 !important;
+.layer {
+  &__delete-button:hover {
+    background-color: $teritary-1 !important;
+  }
 }
