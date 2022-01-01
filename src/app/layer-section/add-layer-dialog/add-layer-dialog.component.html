@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Add property group</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name of property</mat-label>
+    <input matInput [(ngModel)]="newProperty" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button (click)="addLayerAndCloseDialog()" cdkFocusInitial>
+    Add
+  </button>
+</div>
