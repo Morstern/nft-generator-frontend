@@ -8,7 +8,7 @@ import { LayerService } from '@services/upload-section/layer/layer.service';
   templateUrl: './add-layer-dialog.component.html',
 })
 export class AddLayerDialogComponent implements OnInit {
-  newProperty: string = '';
+  newLayer: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<AddLayerDialogComponent>,
@@ -26,7 +26,7 @@ export class AddLayerDialogComponent implements OnInit {
     this.layerService.layers = [
       ...this.data.layers,
       {
-        layerName: this.newProperty,
+        layerName: this.newLayer,
       } as Layer,
     ];
     this.closeDialog();
