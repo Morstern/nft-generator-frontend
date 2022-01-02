@@ -1,8 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
+import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
+import { LayerObject } from 'app/common/tos/layer-object';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
-
 import { LayerComponent } from './layer.component';
 
 describe('LayerComponent', () => {
@@ -13,6 +20,18 @@ describe('LayerComponent', () => {
 
   const mockLayer = {
     layerName: layerName,
+    layerObjects: [],
+  } as Layer;
+
+  const mockLayerObject: LayerObject = {
+    arrayBuffer: new ArrayBuffer(1),
+    fitnessScore: 50,
+    name: 'test',
+  };
+
+  const updatedMockLayer = {
+    layerName: layerName,
+    layerObjects: [mockLayerObject],
   } as Layer;
 
   class MOCK_MAT_DIALOG {
@@ -21,12 +40,19 @@ describe('LayerComponent', () => {
     }
   }
 
-  class MOCK_LAYER_SERVICE {}
+  class MOCK_LAYER_SERVICE {
+    updateLayer(layer: Layer): void {
+      //
+    }
+  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LayerComponent],
-      providers: [{ provide: MatDialog, useClass: MOCK_MAT_DIALOG }],
+      providers: [
+        { provide: MatDialog, useClass: MOCK_MAT_DIALOG },
+        { provide: LayerService, useClass: MOCK_LAYER_SERVICE },
+      ],
     }).compileComponents();
   });
 
@@ -64,5 +90,30 @@ describe('LayerComponent', () => {
       width: '250px',
       data: { layer: mockLayer },
     });
+  });
+
+  it(`should update layer's layerObjects when one file is selected`, () => {
+    //TODO: learn how to test functions inside subscribe, because we do not test if updateLayer was called
+
+    component.layer = {
+      layerName: layerName,
+      layerObjects: [],
+    };
+
+    let list = new DataTransfer();
+    let file = new File(['content'], 'filename.jpg');
+    list.items.add(file);
+
+    let myFileList = list.files;
+
+    fixture.detectChanges();
+
+    component.fileInput.nativeElement.files = myFileList;
+
+    component['_fileList$'].subscribe((element) => {
+      expect(element).toContain(file);
+    });
+
+    component.onFilesSelected();
   });
 });

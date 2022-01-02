@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Layer } from 'app/common/tos/layer';
 import { LayerService } from '@services/upload-section/layer/layer.service';
+import { Layer } from 'app/common/tos/layer';
 
 @Component({
   selector: 'app-add-layer-dialog',
@@ -27,6 +27,7 @@ export class AddLayerDialogComponent implements OnInit {
       ...this.data.layers,
       {
         layerName: this.newLayer,
+        layerObjects: [],
       } as Layer,
     ];
     this.closeDialog();

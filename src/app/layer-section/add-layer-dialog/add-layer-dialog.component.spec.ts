@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
-
 import { AddLayerDialogComponent } from './add-layer-dialog.component';
 
 describe('AddLayerDialogComponent', () => {

@@ -2,15 +2,31 @@
   <mat-expansion-panel-header>
     <mat-panel-title> {{ layer.layerName }} </mat-panel-title>
     <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      class="layer__add-objects-button"
+      (click)="fileInput.click()"
+    >
+      Add pictures
+    </button>
+    <input
+      hidden
+      (change)="onFilesSelected()"
+      #fileInput
+      type="file"
+      multiple
+    />
+    <button
       mat-raised-button
       color="warn"
       (click)="openRemoveLayerDialog($event)"
       class="layer__delete-button"
     >
-      Delete layer <mat-icon>delete</mat-icon>
+      <mat-icon>delete</mat-icon>
     </button>
   </mat-expansion-panel-header>
-  <div *ngFor="let item of [].constructor(10); let i = index">
-    <div>{{ i }}</div>
+  <div *ngFor="let layerObject of layer.layerObjects">
+    <div>{{ layerObject.name }}</div>
   </div>
 </mat-expansion-panel>

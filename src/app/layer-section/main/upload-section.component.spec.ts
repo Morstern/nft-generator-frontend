@@ -5,17 +5,19 @@ import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
 import { Observable, of } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
-
 import { UploadSectionComponent } from './upload-section.component';
 
 describe('UploadSectionComponent', () => {
   let component: UploadSectionComponent;
   let fixture: ComponentFixture<UploadSectionComponent>;
 
-  const mockLayers: Array<Layer> = [{ layerName: 'xD' }, { layerName: 'xD2' }];
+  const mockLayers: Array<Layer> = [
+    { layerName: 'xD', layerObjects: [] },
+    { layerName: 'xD2', layerObjects: [] },
+  ];
   const mockLayersAfterMove: Array<Layer> = [
-    { layerName: 'xD2' },
-    { layerName: 'xD' },
+    { layerName: 'xD2', layerObjects: [] },
+    { layerName: 'xD', layerObjects: [] },
   ];
 
   class MOCK_MAT_DIALOG {

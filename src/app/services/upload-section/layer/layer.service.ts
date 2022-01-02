@@ -29,4 +29,12 @@ export class LayerService {
       this.layers.filter((layer) => layerToRemove.layerName != layer.layerName)
     );
   }
+
+  updateLayer(updatedLayer: Layer): void {
+    const layers = this.layers;
+    layers
+      .filter((layer) => layer.layerName === updatedLayer.layerName)
+      .forEach((layer) => (layer.layerObjects = updatedLayer.layerObjects));
+    this.layers = layers;
+  }
 }
