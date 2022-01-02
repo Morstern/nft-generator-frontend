@@ -75,6 +75,7 @@ describe('AddLayerDialogComponent', () => {
   });
 
   it('should call close and set layer on confirm', () => {
+    component.newLayer = 'test';
     fixture.detectChanges();
 
     const spyClose = spyOn(component.dialogRef, 'close');
@@ -84,13 +85,37 @@ describe('AddLayerDialogComponent', () => {
       'set'
     );
 
-    const removeButton = fixture.debugElement.nativeElement.querySelector(
+    const addButton = fixture.debugElement.nativeElement.querySelector(
       '.add-layer-dialog__add-button'
     );
 
-    removeButton.click();
+    addButton.click();
 
     expect(spyClose).toHaveBeenCalled();
     expect(spySetLayers).toHaveBeenCalled();
+  });
+
+  it('should disable button when input is empty', () => {
+    component.newLayer = '';
+
+    fixture.detectChanges();
+
+    const addButton = fixture.debugElement.nativeElement.querySelector(
+      '.add-layer-dialog__add-button'
+    );
+
+    expect(addButton.disabled).toBeTrue();
+  });
+
+  it('should enable button when input is not empty', () => {
+    component.newLayer = 'test';
+
+    fixture.detectChanges();
+
+    const addButton = fixture.debugElement.nativeElement.querySelector(
+      '.add-layer-dialog__add-button'
+    );
+
+    expect(addButton.disabled).toBeFalse();
   });
 });

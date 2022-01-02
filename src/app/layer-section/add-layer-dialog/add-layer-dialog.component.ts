@@ -31,4 +31,8 @@ export class AddLayerDialogComponent implements OnInit {
     ];
     this.closeDialog();
   }
+
+  get isButtonDisabled(): boolean {
+    return this.newLayer.length == 0 ? true : false;
+  }
 }
