@@ -3,27 +3,31 @@ import { MatDialog } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
 import { LayerObject } from 'app/common/tos/layer-object';
-import { concatMap, mergeMap, Observable, of, Subject } from 'rxjs';
+import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
+import { concatMap, mergeMap, Subject, takeUntil } from 'rxjs';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 
 @Component({
   selector: 'app-layer',
   templateUrl: './layer.component.html',
 })
-export class LayerComponent implements OnInit {
+export class LayerComponent extends SafeUnsubscribe implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   @Input() layer: Layer;
 
   private _fileList$: Subject<Array<File>> = new Subject<Array<File>>();
 
-  constructor(public dialog: MatDialog, private layerService: LayerService) {}
+  constructor(public dialog: MatDialog, private layerService: LayerService) {
+    super();
+  }
 
   ngOnInit(): void {
     this._fileList$
       .pipe(
         mergeMap((files) => files),
-        concatMap((file: File) => this.readFileAndCreateLayerObject(file))
+        concatMap((file: File) => this.readFileAndCreateLayerObject(file)),
+        takeUntil(this._ngUnsubscribe)
       )
       .subscribe((newLayerObject) => {
         this.layer.layerObjects = [

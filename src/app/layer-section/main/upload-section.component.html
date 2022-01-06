@@ -7,14 +7,14 @@
   <div
     cdkDropList
     [cdkDropListData]="layers"
-    class="layers-wrapper__layers-list"
+    class="upload-section__layers-list"
     (cdkDropListDropped)="drop($event)"
   >
     <app-layer
       *ngFor="let layer of layers"
       [layer]="layer"
-      class="layers-list__layer-element"
-      cdkDragBoundary=".layers-wrapper__layers-list"
+      class="upload-section__layer-container"
+      cdkDragBoundary=".upload-section__layers-list"
       cdkDrag
     ></app-layer>
   </div>

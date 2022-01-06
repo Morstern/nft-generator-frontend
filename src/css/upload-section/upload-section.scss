@@ -26,73 +26,47 @@
   &__generate-pictures > button:hover {
     background-color: $teritary-3 !important;
   }
-}
 
-.layers-wrapper__layers-list {
-  height: 90vh;
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: $teritary-1;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
-}
-
-.layers-list__layer-element {
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  font-size: 14px;
-}
-
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.layers-list__layer-element:last-child {
-  border: none;
-}
-
-.layers-wrapper__layers-list.cdk-drop-list-dragging
-  .layers-list__layer-element:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-app-layer mat-panel-title {
-  align-items: center;
-}
-
-app-layer mat-expansion-panel {
-  width: 100%;
-}
-
-.layer {
-  justify-content: space-between;
-  &__delete-button:hover {
-    background-color: $teritary-1 !important;
+  &__layers-list {
+    height: 90vh;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    background: $teritary-1;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
   }
 
-  &__add-objects-button:hover {
-    background-color: $teritary-3 !important;
-  }
+  &__layer-container {
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    font-size: 14px;
 
-  &__delete-button {
-    margin-left: 0.5rem !important;
+    &:last-child {
+      border: none;
+    }
+
+    .layer {
+      justify-content: space-between;
+      &__add-objects-button {
+        &:hover {
+          background-color: $teritary-3 !important;
+        }
+      }
+
+      &__delete-button {
+        margin-left: 0.5rem !important;
+
+        &:hover {
+          background-color: $teritary-1 !important;
+        }
+      }
+    }
   }
 }

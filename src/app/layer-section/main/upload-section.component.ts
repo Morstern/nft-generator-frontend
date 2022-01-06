@@ -3,20 +3,24 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
 import { Layer } from 'app/common/tos/layer';
+import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
+import { takeUntil } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
 
 @Component({
   selector: 'app-upload-section',
   templateUrl: './upload-section.component.html',
 })
-export class UploadSectionComponent implements OnInit {
+export class UploadSectionComponent extends SafeUnsubscribe implements OnInit {
   layers: Array<Layer>;
 
-  constructor(public dialog: MatDialog, private layerService: LayerService) {}
+  constructor(public dialog: MatDialog, private layerService: LayerService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.layerService.layers$
-      .pipe() // add on delete
+      .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe((data) => (this.layers = data));
   }
 
