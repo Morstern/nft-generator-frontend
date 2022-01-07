@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PreviewLayer } from '@common/tos/preview-layer';
+import { PreviewLayerItem } from '@common/tos/preview-layer-item';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
-import { LayerObject } from 'app/common/tos/layer-object';
 import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
 import { concatMap, mergeMap, Subject, takeUntil } from 'rxjs';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
@@ -14,7 +14,7 @@ import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-
 export class LayerComponent extends SafeUnsubscribe implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  @Input() layer: Layer;
+  @Input() layer: PreviewLayer;
 
   private _fileList$: Subject<Array<File>> = new Subject<Array<File>>();
 
@@ -26,13 +26,13 @@ export class LayerComponent extends SafeUnsubscribe implements OnInit {
     this._fileList$
       .pipe(
         mergeMap((files) => files),
-        concatMap((file: File) => this.readFileAndCreateLayerObject(file)),
+        concatMap((file: File) => this.readFileAndCreateLayerItem(file)),
         takeUntil(this._ngUnsubscribe)
       )
-      .subscribe((newLayerObject) => {
-        this.layer.layerObjects = [
-          ...this.layer.layerObjects,
-          <LayerObject>newLayerObject,
+      .subscribe((newLayerItem) => {
+        this.layer.previewLayerItems = [
+          ...this.layer.previewLayerItems,
+          <PreviewLayerItem>newLayerItem,
         ];
         this.layerService.updateLayer(this.layer);
       });
@@ -57,17 +57,18 @@ export class LayerComponent extends SafeUnsubscribe implements OnInit {
     }) as Array<File>;
   }
 
-  private readFileAndCreateLayerObject(file: File): Promise<LayerObject> {
+  private readFileAndCreateLayerItem(file: File): Promise<PreviewLayerItem> {
     return new Promise((resolve) => {
       const reader: FileReader = new FileReader();
       reader.onloadend = () => {
         resolve({
-          arrayBuffer: reader.result,
+          base64img: reader.result,
           name: file.name,
           fitnessScore: 50,
-        } as LayerObject);
+          fileType: file.type,
+        } as PreviewLayerItem);
       };
-      reader.readAsArrayBuffer(file);
+      reader.readAsDataURL(file);
     });
   }
 }

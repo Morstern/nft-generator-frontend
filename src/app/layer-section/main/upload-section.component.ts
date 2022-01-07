@@ -1,8 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PreviewLayer } from '@common/tos/preview-layer';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
 import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
 import { takeUntil } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
@@ -12,7 +12,7 @@ import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.co
   templateUrl: './upload-section.component.html',
 })
 export class UploadSectionComponent extends SafeUnsubscribe implements OnInit {
-  layers: Array<Layer>;
+  layers: Array<PreviewLayer>;
 
   constructor(public dialog: MatDialog, private layerService: LayerService) {
     super();
@@ -31,7 +31,7 @@ export class UploadSectionComponent extends SafeUnsubscribe implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Layer[]>): void {
+  drop(event: CdkDragDrop<PreviewLayer[]>): void {
     moveItemInArray(
       event.container.data,
       event.previousIndex,

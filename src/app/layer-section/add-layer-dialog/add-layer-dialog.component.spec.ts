@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
+import { PreviewLayer } from '@common/tos/preview-layer';
 import { AddLayerDialogComponent } from './add-layer-dialog.component';
 
 describe('AddLayerDialogComponent', () => {
@@ -12,7 +12,7 @@ describe('AddLayerDialogComponent', () => {
     layers: [
       {
         layerName: '2137',
-      } as Layer,
+      } as PreviewLayer,
     ],
   };
 
@@ -23,7 +23,7 @@ describe('AddLayerDialogComponent', () => {
   }
 
   class MOCK_LAYER_SERVICE {
-    set layers(layer: Layer) {
+    set layers(layer: PreviewLayer) {
       //
     }
   }

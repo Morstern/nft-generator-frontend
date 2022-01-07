@@ -1,14 +1,10 @@
 import {
   ComponentFixture,
-  fakeAsync,
   TestBed,
-  tick,
-  waitForAsync,
 } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
+import { PreviewLayer } from '@common/tos/preview-layer';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
-import { LayerObject } from 'app/common/tos/layer-object';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 import { LayerComponent } from './layer.component';
 
@@ -18,21 +14,10 @@ describe('LayerComponent', () => {
 
   const layerName = 'Jean Paul II';
 
-  const mockLayer = {
+  const mockPreviewLayer = {
     layerName: layerName,
-    layerObjects: [],
-  } as Layer;
-
-  const mockLayerObject: LayerObject = {
-    arrayBuffer: new ArrayBuffer(1),
-    fitnessScore: 50,
-    name: 'test',
-  };
-
-  const updatedMockLayer = {
-    layerName: layerName,
-    layerObjects: [mockLayerObject],
-  } as Layer;
+    previewLayerItems: [],
+  } as PreviewLayer;
 
   class MOCK_MAT_DIALOG {
     open(): void {
@@ -41,7 +26,7 @@ describe('LayerComponent', () => {
   }
 
   class MOCK_LAYER_SERVICE {
-    updateLayer(layer: Layer): void {
+    updateLayer(layer: PreviewLayer): void {
       //
     }
   }
@@ -62,7 +47,7 @@ describe('LayerComponent', () => {
   });
 
   it('should create component and render title', () => {
-    component.layer = mockLayer;
+    component.layer = mockPreviewLayer;
 
     fixture.detectChanges();
 
@@ -77,7 +62,7 @@ describe('LayerComponent', () => {
   it('should call open remove dialog on remove layer click', () => {
     const spyOpen = spyOn(component.dialog, 'open');
 
-    component.layer = mockLayer;
+    component.layer = mockPreviewLayer;
 
     fixture.detectChanges();
     const removeLayerButton = fixture.debugElement.nativeElement.querySelector(
@@ -88,17 +73,14 @@ describe('LayerComponent', () => {
 
     expect(spyOpen).toHaveBeenCalledWith(RemoveLayerDialogComponent, {
       width: '250px',
-      data: { layer: mockLayer },
+      data: { layer: mockPreviewLayer },
     });
   });
 
   it(`should update layer's layerObjects when one file is selected`, () => {
     //TODO: learn how to test functions inside subscribe, because we do not test if updateLayer was called
 
-    component.layer = {
-      layerName: layerName,
-      layerObjects: [],
-    };
+    component.layer = mockPreviewLayer;
 
     let list = new DataTransfer();
     let file = new File(['content'], 'filename.jpg');

@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-import { Layer } from 'app/common/tos/layer';
-import { LayerObject } from 'app/common/tos/layer-object';
+import { PreviewLayer } from '@common/tos/preview-layer';
+import { PreviewLayerItem } from '@common/tos/preview-layer-item';
 import { LayerService } from './layer.service';
 
 describe('LayerService', () => {
   let service: LayerService;
 
-  const mockLayers: Array<Layer> = [
-    { layerName: 'a', layerObjects: [] },
-    { layerName: 'b', layerObjects: [] },
+  const mockLayers: Array<PreviewLayer> = [
+    { layerName: 'a', previewLayerItems: [] },
+    { layerName: 'b', previewLayerItems: [] },
   ];
 
   beforeEach(() => {
@@ -31,27 +31,28 @@ describe('LayerService', () => {
   it('should remove layer', () => {
     service.layers = mockLayers;
 
-    service.removeLayer({ layerName: 'a', layerObjects: [] });
+    service.removeLayer({ layerName: 'a', previewLayerItems: [] });
 
-    expect(service.layers).toEqual([{ layerName: 'b', layerObjects: [] }]);
+    expect(service.layers).toEqual([{ layerName: 'b', previewLayerItems: [] }]);
   });
 
   it('should update layer', () => {
     service.layers = mockLayers;
-    const mockLayerObject: LayerObject = {
+    const mockPreviewLayerItem: PreviewLayerItem = {
       fitnessScore: 50,
       name: 'xD',
-      arrayBuffer: new ArrayBuffer(1),
+      base64img: 'costam',
+      fileType: 'image/jpg',
     };
 
     service.updateLayer({
       layerName: 'a',
-      layerObjects: [mockLayerObject],
+      previewLayerItems: [mockPreviewLayerItem],
     });
 
     expect(service.layers).toEqual([
-      { layerName: 'a', layerObjects: [mockLayerObject] },
-      { layerName: 'b', layerObjects: [] },
+      { layerName: 'a', previewLayerItems: [mockPreviewLayerItem] },
+      { layerName: 'b', previewLayerItems: [] },
     ]);
   });
 });

@@ -5,7 +5,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
+import { PreviewLayer } from '@common/tos/preview-layer';
 import { RemoveLayerDialogComponent } from './remove-layer-dialog.component';
 
 describe('RemoveLayerDialogComponent', () => {
@@ -17,7 +17,7 @@ describe('RemoveLayerDialogComponent', () => {
   const MOCK_MAT_DIALOG_DATA: any = {
     layer: {
       layerName: '2137',
-    } as Layer,
+    } as PreviewLayer,
   };
 
   class MOCK_MAT_DIALOG_REF {

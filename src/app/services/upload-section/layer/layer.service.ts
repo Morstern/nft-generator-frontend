@@ -1,40 +1,41 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Layer } from '../../../common/tos/layer';
+import { PreviewLayer } from '@common/tos/preview-layer';
+import {} from '@common/converters/layer-item-converter'
 
 @Injectable({
   providedIn: 'root',
 })
 export class LayerService {
-  private _layers$: BehaviorSubject<Array<Layer>> = new BehaviorSubject<
-    Array<Layer>
+  private _layers$: BehaviorSubject<Array<PreviewLayer>> = new BehaviorSubject<
+    Array<PreviewLayer>
   >([]);
 
   constructor() {}
 
-  get layers$(): Observable<Array<Layer>> {
+  get layers$(): Observable<Array<PreviewLayer>> {
     return this._layers$.asObservable();
   }
 
-  get layers(): Array<Layer> {
+  get layers(): Array<PreviewLayer> {
     return this._layers$.getValue();
   }
 
-  set layers(layers: Array<Layer>) {
+  set layers(layers: Array<PreviewLayer>) {
     this._layers$.next(layers);
   }
 
-  removeLayer(layerToRemove: Layer) {
+  removeLayer(layerToRemove: PreviewLayer) {
     this._layers$.next(
       this.layers.filter((layer) => layerToRemove.layerName != layer.layerName)
     );
   }
 
-  updateLayer(updatedLayer: Layer): void {
+  updateLayer(updatedLayer: PreviewLayer): void {
     const layers = this.layers;
     layers
       .filter((layer) => layer.layerName === updatedLayer.layerName)
-      .forEach((layer) => (layer.layerObjects = updatedLayer.layerObjects));
+      .forEach((layer) => (layer.previewLayerItems = updatedLayer.previewLayerItems));
     this.layers = layers;
   }
 }

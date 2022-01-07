@@ -2,7 +2,7 @@ import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { LayerService } from '@services/upload-section/layer/layer.service';
-import { Layer } from 'app/common/tos/layer';
+import { PreviewLayer } from '@common/tos/preview-layer';
 import { Observable, of } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
 import { UploadSectionComponent } from './upload-section.component';
@@ -11,13 +11,13 @@ describe('UploadSectionComponent', () => {
   let component: UploadSectionComponent;
   let fixture: ComponentFixture<UploadSectionComponent>;
 
-  const mockLayers: Array<Layer> = [
-    { layerName: 'xD', layerObjects: [] },
-    { layerName: 'xD2', layerObjects: [] },
+  const mockPreviewLayers: Array<PreviewLayer> = [
+    { layerName: 'xD', previewLayerItems: [] },
+    { layerName: 'xD2', previewLayerItems: [] },
   ];
-  const mockLayersAfterMove: Array<Layer> = [
-    { layerName: 'xD2', layerObjects: [] },
-    { layerName: 'xD', layerObjects: [] },
+  const mockPreviewLayersAfterMove: Array<PreviewLayer> = [
+    { layerName: 'xD2', previewLayerItems: [] },
+    { layerName: 'xD', previewLayerItems: [] },
   ];
 
   class MOCK_MAT_DIALOG {
@@ -27,8 +27,8 @@ describe('UploadSectionComponent', () => {
   }
 
   class MOCK_LAYER_SERVICE {
-    get layers$(): Observable<Array<Layer>> {
-      return of(mockLayers);
+    get layers$(): Observable<Array<PreviewLayer>> {
+      return of(mockPreviewLayers);
     }
   }
 
@@ -74,7 +74,7 @@ describe('UploadSectionComponent', () => {
 
     expect(spyOpen).toHaveBeenCalledWith(AddLayerDialogComponent, {
       width: '250px',
-      data: { layers: mockLayers },
+      data: { layers: mockPreviewLayers },
     });
   });
 
@@ -94,16 +94,16 @@ describe('UploadSectionComponent', () => {
     const event = {
       previousIndex: fromIndex,
       currentIndex: toIndex,
-      container: <CdkDropList<Array<Layer>>>container,
-      previousContainer: <CdkDropList<Array<Layer>>>container,
-      item: <CdkDrag<Layer>>{ data: component.layers[fromIndex] },
+      container: <CdkDropList<Array<PreviewLayer>>>container,
+      previousContainer: <CdkDropList<Array<PreviewLayer>>>container,
+      item: <CdkDrag<PreviewLayer>>{ data: component.layers[fromIndex] },
       isPointerOverContainer: true,
       distance: { x: 0, y: 0 },
-    } as CdkDragDrop<Layer[], Layer[]>;
+    } as CdkDragDrop<PreviewLayer[], PreviewLayer[]>;
 
     component.drop(event);
 
-    expect(component.layers).toEqual(mockLayersAfterMove);
+    expect(component.layers).toEqual(mockPreviewLayersAfterMove);
   });
 
   it('should not move item when indexes does not change after drop', () => {
@@ -116,15 +116,15 @@ describe('UploadSectionComponent', () => {
     const event = {
       previousIndex: fromIndex,
       currentIndex: toIndex,
-      container: <CdkDropList<Array<Layer>>>container,
-      previousContainer: <CdkDropList<Array<Layer>>>container,
-      item: <CdkDrag<Layer>>{ data: component.layers[fromIndex] },
+      container: <CdkDropList<Array<PreviewLayer>>>container,
+      previousContainer: <CdkDropList<Array<PreviewLayer>>>container,
+      item: <CdkDrag<PreviewLayer>>{ data: component.layers[fromIndex] },
       isPointerOverContainer: true,
       distance: { x: 0, y: 0 },
-    } as CdkDragDrop<Layer[], Layer[]>;
+    } as CdkDragDrop<PreviewLayer[], PreviewLayer[]>;
 
     component.drop(event);
 
-    expect(component.layers).toEqual(mockLayers);
+    expect(component.layers).toEqual(mockPreviewLayers);
   });
 });
