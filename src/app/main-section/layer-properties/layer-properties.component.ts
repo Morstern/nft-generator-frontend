@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { SafeUnsubscribe } from '@common/utils/SafeUnsubscribe';
-import { LayerService } from '@services/common/layer.service';
+import { LayerService } from '@services/common/layer-service/layer.service';
 import { Observable, takeUntil } from 'rxjs';
 
 @Component({

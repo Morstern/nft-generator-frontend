@@ -4,7 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { LayerService } from '@services/common/layer.service';
+import { LayerService } from '@services/common/layer-service/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { RemoveLayerDialogComponent } from './remove-layer-dialog.component';
 

@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
-import { LayerService } from '@services/common/layer.service';
+import { LayerService } from '@services/common/layer-service/layer.service';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 import { LayerComponent } from './layer.component';
 
