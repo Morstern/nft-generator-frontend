@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { PreviewLayerItem } from '@common/tos/preview-layer-item';
-import { LayerService } from '@services/upload-section/layer/layer.service';
+import { LayerService } from '@services/common/layer.service';
 import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
 import { concatMap, mergeMap, Subject, takeUntil } from 'rxjs';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';

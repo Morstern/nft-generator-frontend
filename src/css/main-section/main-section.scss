@@ -3,11 +3,15 @@
   flex-direction: column;
   height: 100%;
   &__preview {
-    background-color: cornsilk;
-    flex-grow: 7;
+    flex-grow: 6;
+    background-color: $primary;
   }
   &__layer-properties {
-    background-color: crimson;
+    background-color: $primary;
     flex-grow: 3;
   }
+}
+
+.layer-properties {
+  max-width: 60vw;
 }

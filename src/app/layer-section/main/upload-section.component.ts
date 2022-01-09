@@ -2,7 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
-import { LayerService } from '@services/upload-section/layer/layer.service';
+import { LayerService } from '@services/common/layer.service';
 import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
 import { takeUntil } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';

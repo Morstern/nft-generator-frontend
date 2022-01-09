@@ -1,1 +1,10 @@
-<p>layer-properties works!</p>
+<div class="layer-properties">
+  <mat-tab-group class="layer-properties__tabs">
+    <mat-tab
+      *ngFor="let layer of layers$ | async"
+      class="layer-properties__tab"
+      label="{{ layer.layerName }}"
+    >
+    </mat-tab>
+  </mat-tab-group>
+</div>

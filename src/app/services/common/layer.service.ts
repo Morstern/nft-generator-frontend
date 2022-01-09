@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { PreviewLayer } from '@common/tos/preview-layer';
-import {} from '@common/converters/layer-item-converter'
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +34,9 @@ export class LayerService {
     const layers = this.layers;
     layers
       .filter((layer) => layer.layerName === updatedLayer.layerName)
-      .forEach((layer) => (layer.previewLayerItems = updatedLayer.previewLayerItems));
+      .forEach(
+        (layer) => (layer.previewLayerItems = updatedLayer.previewLayerItems)
+      );
     this.layers = layers;
   }
 }

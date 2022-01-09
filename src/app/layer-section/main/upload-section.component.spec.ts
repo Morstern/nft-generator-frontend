@@ -1,7 +1,7 @@
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { LayerService } from '@services/upload-section/layer/layer.service';
+import { LayerService } from '@services/common/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { Observable, of } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { LayerService } from './upload-section/layer/layer.service';
+import { LayerService } from './common/layer.service';
+import { LayerPropertyService } from './layer-property/layer-property.service';
 
 @NgModule({
   imports: [CommonModule],
-  providers: [LayerService],
+  providers: [LayerService, LayerPropertyService],
 })
 export class ServicesModule {}
