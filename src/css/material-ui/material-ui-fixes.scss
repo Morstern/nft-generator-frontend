@@ -27,9 +27,20 @@ app-layer mat-expansion-panel {
 }
 
 mat-tab-group {
+  padding: 0.25rem 0rem;
   background-color: $teritary-2;
 }
 
-div[role="tab"]:hover {
+div[role="tab"] {
+  opacity: 1;
+  color: white;
+  background-color: $secondary;
+}
+
+div[role="tab"][class*="mat-tab-label-active"] {
   background-color: $teritary-1;
+}
+
+div[role="tab"]:hover {
+  background-color: $primary;
 }
