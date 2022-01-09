@@ -1,0 +1,31 @@
+<div class="notification">
+  <div class="notification__header-container">
+    <ng-container [ngSwitch]="notification.notificationType">
+      <mat-icon
+        *ngSwitchCase="notificationType.ERROR"
+        class="notification__icon"
+        >error</mat-icon
+      >
+      <mat-icon
+        *ngSwitchCase="notificationType.SUCCESS"
+        class="notification__icon"
+        >check_circle</mat-icon
+      >
+      <mat-icon
+        *ngSwitchCase="notificationType.WARNING"
+        class="notification__icon"
+        >warning</mat-icon
+      >
+      <mat-icon *ngSwitchCase="notificationType.INFO" class="notification__icon"
+        >info</mat-icon
+      >
+    </ng-container>
+    <span class="notification__header">{{ header }}</span>
+    <mat-icon class="notification__close-icon" (click)="closeNotification()"
+      >close</mat-icon
+    >
+  </div>
+  <div class="notification__body-container">
+    <span class="notification__message">{{ notification.message }}</span>
+  </div>
+</div>

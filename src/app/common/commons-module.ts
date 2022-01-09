@@ -1,5 +1,4 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,10 +6,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [NotificationComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -20,6 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatExpansionModule,
     DragDropModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -29,7 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatExpansionModule,
     DragDropModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
-  providers: [OverlayModule],
 })
-export class AngularMaterialModule {}
+export class CommonsModule {}

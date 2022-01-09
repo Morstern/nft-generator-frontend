@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesModule } from '@services/services.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AngularMaterialModule } from './common/angular-material.module';
+import { CommonsModule } from './common/commons-module';
 import { LayerSectionModule } from './layer-section/layer-section.module';
 import { MainSectionModule } from './main-section/main-section.module';
 
@@ -17,7 +17,7 @@ import { MainSectionModule } from './main-section/main-section.module';
     LayerSectionModule,
     MainSectionModule,
     ServicesModule,
-    AngularMaterialModule,
+    CommonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

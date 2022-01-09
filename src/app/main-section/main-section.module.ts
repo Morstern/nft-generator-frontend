@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularMaterialModule } from '@common/angular-material.module';
+import { CommonsModule } from '@common/commons-module';
 import { MainSectionComponent } from './main-section/main-section.component';
 import { LayerPropertiesComponent } from './layer-properties/layer-properties.component';
 import { LayerPropertiesContainerComponent } from './layer-properties-container/layer-properties-container.component';
@@ -15,7 +15,7 @@ import { LayerPropertiesContainerComponent } from './layer-properties-container/
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    CommonsModule
   ],
   exports: [
     MainSectionComponent

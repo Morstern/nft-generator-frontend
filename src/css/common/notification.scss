@@ -1,0 +1,55 @@
+.notification {
+  &--error {
+    background-color: rgb(139, 25, 25);
+  }
+
+  &--success {
+    background-color: rgb(43, 141, 35);
+  }
+
+  &--info {
+    background-color: rgb(211, 211, 211);
+  }
+
+  &--warning {
+    background-color: rgb(236, 196, 16);
+  }
+
+  &--info,
+  &--warning {
+    .notification__icon {
+      color: black;
+    }
+
+    .notification__header {
+      color: black;
+    }
+
+    .notification__close-icon {
+      color: black;
+    }
+
+    .notification__message {
+      color: black;
+    }
+  }
+
+  &__header-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__body-container {
+    padding-top: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 0.25rem;
+  }
+
+  &__header {
+    margin-right: auto;
+  }
+}

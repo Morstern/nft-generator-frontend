@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LayerService } from '@services/common/layer-service/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
+import { LayerService } from '@services/common/layer-service/layer.service';
 
 @Component({
   selector: 'app-add-layer-dialog',
