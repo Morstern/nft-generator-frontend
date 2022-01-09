@@ -1,0 +1,13 @@
+.main-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &__preview {
+    background-color: cornsilk;
+    flex-grow: 7;
+  }
+  &__layer-properties {
+    background-color: crimson;
+    flex-grow: 3;
+  }
+}

@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "upload-section/upload-section.scss";
 @import "color-palette.scss";
-@import "upload-section/material-ui-fixes.scss";
+@import "material-ui/material-ui-fixes.scss";
+@import "upload-section/upload-section.scss";
+@import "main-section/main-section.scss";
 
 html,
 body {

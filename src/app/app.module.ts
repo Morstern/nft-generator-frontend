@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularMaterialModule } from './common/angular-material.module';
 import { LayerSectionModule } from './layer-section/layer-section.module';
+import { MainSectionModule } from './main-section/main-section.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { LayerSectionModule } from './layer-section/layer-section.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayerSectionModule,
+    MainSectionModule,
     ServicesModule,
     AngularMaterialModule,
   ],
