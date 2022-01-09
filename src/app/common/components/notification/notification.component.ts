@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
 
   constructor(
     @Inject(MAT_SNACK_BAR_DATA) public data: any,
-    public _snackRef: MatSnackBarRef<NotificationComponent>
+    private _snackRef: MatSnackBarRef<NotificationComponent>
   ) {}
 
   ngOnInit(): void {
