@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { LayerService } from '@services/common/layer-service/layer.service';
+import { NotificationService } from '@services/common/notification-service/notification.service';
 
 @Component({
   selector: 'app-add-layer-dialog',
@@ -13,7 +14,8 @@ export class AddLayerDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddLayerDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private layerService: LayerService
+    private layerService: LayerService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {}
@@ -23,6 +25,18 @@ export class AddLayerDialogComponent implements OnInit {
   }
 
   addLayerAndCloseDialog(): void {
+    const alreadyExistingLayers: Array<PreviewLayer> = this.data.layers;
+
+    if (
+      alreadyExistingLayers.find((layer) => layer.layerName == this.newLayer) !=
+      undefined
+    ) {
+      this.notificationService.error({
+        message: 'Layer with same name already exist',
+      });
+      return;
+    }
+
     this.layerService.layers = [
       ...this.data.layers,
       {
@@ -31,6 +45,9 @@ export class AddLayerDialogComponent implements OnInit {
       } as PreviewLayer,
     ];
     this.closeDialog();
+    this.notificationService.success({
+      message: 'Sucessfully added new layer',
+    });
   }
 
   get isButtonDisabled(): boolean {

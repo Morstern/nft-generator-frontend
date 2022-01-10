@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LayerService } from '@services/common/layer-service/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
+import { LayerService } from '@services/common/layer-service/layer.service';
+import { NotificationService } from '@services/common/notification-service/notification.service';
 import { AddLayerDialogComponent } from './add-layer-dialog.component';
 
 describe('AddLayerDialogComponent', () => {
@@ -28,6 +29,14 @@ describe('AddLayerDialogComponent', () => {
     }
   }
 
+  class MOCK_NOTIFICATION_SERVICE {
+    error() {
+      //
+    }
+
+    success() {}
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddLayerDialogComponent],
@@ -38,6 +47,7 @@ describe('AddLayerDialogComponent', () => {
         },
         { provide: MatDialogRef, useClass: MOCK_MAT_DIALOG_REF },
         { provide: LayerService, useClass: MOCK_LAYER_SERVICE },
+        { provide: NotificationService, useClass: MOCK_NOTIFICATION_SERVICE },
       ],
     }).compileComponents();
   });
@@ -73,11 +83,15 @@ describe('AddLayerDialogComponent', () => {
     expect(spyClose).toHaveBeenCalled();
   });
 
-  it('should call close and set layer on confirm', () => {
+  it('should call close and set layer on confirm when name is unique', () => {
     component.newLayer = 'test';
     fixture.detectChanges();
 
     const spyClose = spyOn(component.dialogRef, 'close');
+    const spyNotifySucccess = spyOn(
+      component['notificationService'],
+      'success'
+    );
     const spySetLayers = spyOnProperty(
       component['layerService'],
       'layers',
@@ -92,6 +106,34 @@ describe('AddLayerDialogComponent', () => {
 
     expect(spyClose).toHaveBeenCalled();
     expect(spySetLayers).toHaveBeenCalled();
+    expect(spyNotifySucccess).toHaveBeenCalledWith({
+      message: 'Sucessfully added new layer',
+    });
+  });
+
+  it('should notify error when name is not unique', () => {
+    component.newLayer = '2137';
+    fixture.detectChanges();
+
+    const spyClose = spyOn(component.dialogRef, 'close');
+    const spyNotifyError = spyOn(component['notificationService'], 'error');
+    const spySetLayers = spyOnProperty(
+      component['layerService'],
+      'layers',
+      'set'
+    );
+
+    const addButton = fixture.debugElement.nativeElement.querySelector(
+      '.add-layer-dialog__add-button'
+    );
+
+    addButton.click();
+
+    expect(spyClose).not.toHaveBeenCalled();
+    expect(spySetLayers).not.toHaveBeenCalled();
+    expect(spyNotifyError).toHaveBeenCalledWith({
+      message: 'Layer with same name already exist',
+    });
   });
 
   it('should disable button when input is empty', () => {
