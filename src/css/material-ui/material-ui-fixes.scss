@@ -45,3 +45,19 @@ div[role="tab"][class*="mat-tab-label-active"] {
 div[role="tab"]:hover {
   background-color: $primary;
 }
+
+.mat-expansion-panel-body {
+  background-color: grey;
+
+  &:empty {
+    padding: 0px !important;
+  }
+
+  &:not(:empty) {
+    padding: 16px 24px 16px !important;
+  }
+
+  & > div:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}

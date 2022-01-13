@@ -1,7 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { LayerService } from '@services/common/layer-service/layer.service';
@@ -14,21 +11,17 @@ describe('LayerComponent', () => {
 
   const layerName = 'Jean Paul II';
 
-  const mockPreviewLayer = {
+  const MOCK_PREVIEW_LAYER = {
     layerName: layerName,
     previewLayerItems: [],
   } as PreviewLayer;
 
   class MOCK_MAT_DIALOG {
-    open(): void {
-      //
-    }
+    open(): void {}
   }
 
   class MOCK_LAYER_SERVICE {
-    updateLayer(layer: PreviewLayer): void {
-      //
-    }
+    updateLayer(layer: PreviewLayer): void {}
   }
 
   beforeEach(async () => {
@@ -47,7 +40,7 @@ describe('LayerComponent', () => {
   });
 
   it('should create component and render title', () => {
-    component.layer = mockPreviewLayer;
+    component.layer = MOCK_PREVIEW_LAYER;
 
     fixture.detectChanges();
 
@@ -62,7 +55,7 @@ describe('LayerComponent', () => {
   it('should call open remove dialog on remove layer click', () => {
     const spyOpen = spyOn(component.dialog, 'open');
 
-    component.layer = mockPreviewLayer;
+    component.layer = MOCK_PREVIEW_LAYER;
 
     fixture.detectChanges();
     const removeLayerButton = fixture.debugElement.nativeElement.querySelector(
@@ -73,14 +66,14 @@ describe('LayerComponent', () => {
 
     expect(spyOpen).toHaveBeenCalledWith(RemoveLayerDialogComponent, {
       width: '250px',
-      data: { layer: mockPreviewLayer },
+      data: { layer: MOCK_PREVIEW_LAYER },
     });
   });
 
   it(`should update layer's layerObjects when one file is selected`, () => {
     //TODO: learn how to test functions inside subscribe, because we do not test if updateLayer was called
 
-    component.layer = mockPreviewLayer;
+    component.layer = MOCK_PREVIEW_LAYER;
 
     let list = new DataTransfer();
     let file = new File(['content'], 'filename.jpg');

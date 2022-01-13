@@ -11,9 +11,6 @@ describe('NotificationComponent', () => {
   let fixture: ComponentFixture<NotificationComponent>;
 
   const ERROR_ICON_MESSAGE = 'error';
-  const SUCCESS_ICON_MESSAGE = 'check_circle';
-  const WARNING_ICON_MESSAGE = 'warning';
-  const INFO_ICON_MESSAGE = 'info';
 
   const MOCK_NOTIFICATION: Notification = {
     message: 'Test message',
@@ -27,9 +24,7 @@ describe('NotificationComponent', () => {
   };
 
   class MOCK_MAT_SNACK_BAR_REF {
-    dismiss(): void {
-      //
-    }
+    dismiss(): void {}
   }
 
   beforeEach(async () => {

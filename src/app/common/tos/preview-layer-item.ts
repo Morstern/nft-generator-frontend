@@ -3,4 +3,5 @@ export interface PreviewLayerItem {
   fitnessScore: number;
   name: string;
   base64img: string;
+  layerName: string;
 }

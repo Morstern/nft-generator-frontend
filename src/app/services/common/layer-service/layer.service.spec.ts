@@ -6,8 +6,16 @@ import { LayerService } from './layer.service';
 describe('LayerService', () => {
   let service: LayerService;
 
-  const mockLayers: Array<PreviewLayer> = [
-    { layerName: 'a', previewLayerItems: [] },
+  const MOCK_PREVIEW_LAYER_ITEM: PreviewLayerItem = {
+    base64img: 'costam',
+    fitnessScore: 50,
+    name: 'test',
+    fileType: 'image/png',
+    layerName: 'a',
+  };
+
+  const MOCK_LAYERS: Array<PreviewLayer> = [
+    { layerName: 'a', previewLayerItems: [MOCK_PREVIEW_LAYER_ITEM] },
     { layerName: 'b', previewLayerItems: [] },
   ];
 
@@ -23,13 +31,13 @@ describe('LayerService', () => {
   it('should set new layers', () => {
     expect(service.layers).toEqual([]);
 
-    service.layers = mockLayers;
+    service.layers = MOCK_LAYERS;
 
-    expect(service.layers).toEqual(mockLayers);
+    expect(service.layers).toEqual(MOCK_LAYERS);
   });
 
   it('should remove layer', () => {
-    service.layers = mockLayers;
+    service.layers = MOCK_LAYERS;
 
     service.removeLayer({ layerName: 'a', previewLayerItems: [] });
 
@@ -37,21 +45,26 @@ describe('LayerService', () => {
   });
 
   it('should update layer', () => {
-    service.layers = mockLayers;
-    const mockPreviewLayerItem: PreviewLayerItem = {
-      fitnessScore: 50,
-      name: 'xD',
-      base64img: 'costam',
-      fileType: 'image/jpg',
-    };
+    service.layers = MOCK_LAYERS;
 
-    service.updateLayer({
+    service.updatePreviewLayerItems({
       layerName: 'a',
-      previewLayerItems: [mockPreviewLayerItem],
+      previewLayerItems: [MOCK_PREVIEW_LAYER_ITEM],
     });
 
     expect(service.layers).toEqual([
-      { layerName: 'a', previewLayerItems: [mockPreviewLayerItem] },
+      { layerName: 'a', previewLayerItems: [MOCK_PREVIEW_LAYER_ITEM] },
+      { layerName: 'b', previewLayerItems: [] },
+    ]);
+  });
+
+  it('should remove layer item from previewLayer', () => {
+    service.layers = MOCK_LAYERS;
+
+    service.removePreviewLayerItem(MOCK_PREVIEW_LAYER_ITEM);
+
+    expect(service.layers).toEqual([
+      { layerName: 'a', previewLayerItems: [] },
       { layerName: 'b', previewLayerItems: [] },
     ]);
   });

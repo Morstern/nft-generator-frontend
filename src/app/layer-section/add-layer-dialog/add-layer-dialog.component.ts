@@ -32,7 +32,7 @@ export class AddLayerDialogComponent implements OnInit {
       undefined
     ) {
       this.notificationService.error({
-        message: 'Layer with same name already exist',
+        message: `Layer with name: ${this.newLayer} already exist`,
       });
       return;
     }

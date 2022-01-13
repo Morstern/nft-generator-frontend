@@ -18,21 +18,15 @@ describe('AddLayerDialogComponent', () => {
   };
 
   class MOCK_MAT_DIALOG_REF {
-    close(): void {
-      //
-    }
+    close(): void {}
   }
 
   class MOCK_LAYER_SERVICE {
-    set layers(layer: PreviewLayer) {
-      //
-    }
+    set layers(layer: PreviewLayer) {}
   }
 
   class MOCK_NOTIFICATION_SERVICE {
-    error() {
-      //
-    }
+    error() {}
 
     success() {}
   }
@@ -132,7 +126,7 @@ describe('AddLayerDialogComponent', () => {
     expect(spyClose).not.toHaveBeenCalled();
     expect(spySetLayers).not.toHaveBeenCalled();
     expect(spyNotifyError).toHaveBeenCalledWith({
-      message: 'Layer with same name already exist',
+      message: 'Layer with name: 2137 already exist',
     });
   });
 

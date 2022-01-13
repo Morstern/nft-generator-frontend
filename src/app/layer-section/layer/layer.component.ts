@@ -34,7 +34,7 @@ export class LayerComponent extends SafeUnsubscribe implements OnInit {
           ...this.layer.previewLayerItems,
           <PreviewLayerItem>newLayerItem,
         ];
-        this.layerService.updateLayer(this.layer);
+        this.layerService.updatePreviewLayerItems(this.layer);
       });
   }
 
@@ -66,6 +66,7 @@ export class LayerComponent extends SafeUnsubscribe implements OnInit {
           name: file.name,
           fitnessScore: 50,
           fileType: file.type,
+          layerName: this.layer.layerName,
         } as PreviewLayerItem);
       };
       reader.readAsDataURL(file);

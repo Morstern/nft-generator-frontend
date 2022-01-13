@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PreviewLayer } from '@common/tos/preview-layer';
+import { PreviewLayerItem } from '@common/tos/preview-layer-item';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -30,12 +31,26 @@ export class LayerService {
     );
   }
 
-  updateLayer(updatedLayer: PreviewLayer): void {
+  updatePreviewLayerItems(updatedLayer: PreviewLayer): void {
     const layers = this.layers;
     layers
       .filter((layer) => layer.layerName === updatedLayer.layerName)
       .forEach(
         (layer) => (layer.previewLayerItems = updatedLayer.previewLayerItems)
+      );
+    this.layers = layers;
+  }
+
+  removePreviewLayerItem(previewLayerItemToRemove: PreviewLayerItem) {
+    const layers = this.layers;
+    layers
+      .filter((layer) => layer.layerName === previewLayerItemToRemove.layerName)
+      .forEach(
+        (layer) =>
+          (layer.previewLayerItems = layer.previewLayerItems.filter(
+            (previewLayerItem) =>
+              previewLayerItem.name !== previewLayerItemToRemove.name
+          ))
       );
     this.layers = layers;
   }

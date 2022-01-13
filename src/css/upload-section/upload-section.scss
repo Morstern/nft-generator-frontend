@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    cursor: move;
+    cursor: default;
     font-size: 14px;
 
     &:last-child {
@@ -64,5 +64,17 @@
         }
       }
     }
+  }
+}
+
+.layer-item {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__name {
+    display: inline-block;
+    margin-right: auto;
   }
 }

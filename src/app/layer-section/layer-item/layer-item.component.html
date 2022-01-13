@@ -1,9 +1,13 @@
 <div class="layer-item">
-  <div>{{ this.previewLayerItem.name }}</div>
-  <img
-    #imgElement
-    width="100"
-    height="100"
-    [src]="this.previewLayerItem.base64img"
-  />
+  <div class="layer-item__header">
+    <div class="layer-item__name">{{ this.previewLayerItem.name }}</div>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="openRemoveLayerItemDialog($event)"
+      class="layer-item__delete-item-button"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
 </div>

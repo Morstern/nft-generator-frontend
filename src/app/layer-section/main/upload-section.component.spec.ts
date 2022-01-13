@@ -1,8 +1,8 @@
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { LayerService } from '@services/common/layer-service/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
+import { LayerService } from '@services/common/layer-service/layer.service';
 import { Observable, of } from 'rxjs';
 import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.component';
 import { UploadSectionComponent } from './upload-section.component';
@@ -11,24 +11,22 @@ describe('UploadSectionComponent', () => {
   let component: UploadSectionComponent;
   let fixture: ComponentFixture<UploadSectionComponent>;
 
-  const mockPreviewLayers: Array<PreviewLayer> = [
+  const MOCK_PREVIEW_LAYERS: Array<PreviewLayer> = [
     { layerName: 'xD', previewLayerItems: [] },
     { layerName: 'xD2', previewLayerItems: [] },
   ];
-  const mockPreviewLayersAfterMove: Array<PreviewLayer> = [
+  const MOCK_PREVIEW_LAYERS_AFTER_MOVE: Array<PreviewLayer> = [
     { layerName: 'xD2', previewLayerItems: [] },
     { layerName: 'xD', previewLayerItems: [] },
   ];
 
   class MOCK_MAT_DIALOG {
-    open(): void {
-      //
-    }
+    open(): void {}
   }
 
   class MOCK_LAYER_SERVICE {
     get layers$(): Observable<Array<PreviewLayer>> {
-      return of(mockPreviewLayers);
+      return of(MOCK_PREVIEW_LAYERS);
     }
   }
 
@@ -74,7 +72,7 @@ describe('UploadSectionComponent', () => {
 
     expect(spyOpen).toHaveBeenCalledWith(AddLayerDialogComponent, {
       width: '250px',
-      data: { layers: mockPreviewLayers },
+      data: { layers: MOCK_PREVIEW_LAYERS },
     });
   });
 
@@ -103,7 +101,7 @@ describe('UploadSectionComponent', () => {
 
     component.drop(event);
 
-    expect(component.layers).toEqual(mockPreviewLayersAfterMove);
+    expect(component.layers).toEqual(MOCK_PREVIEW_LAYERS_AFTER_MOVE);
   });
 
   it('should not move item when indexes does not change after drop', () => {
@@ -125,6 +123,6 @@ describe('UploadSectionComponent', () => {
 
     component.drop(event);
 
-    expect(component.layers).toEqual(mockPreviewLayers);
+    expect(component.layers).toEqual(MOCK_PREVIEW_LAYERS);
   });
 });

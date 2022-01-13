@@ -21,14 +21,8 @@ describe('NotificationService', () => {
     header: 'Test Header',
   };
 
-  const MOCK_NOTIFICATION_WITHOUT_HEADER: Notification = {
-    message: 'Test message',
-  };
-
   class MOCK_MAT_SNACK_BAR {
-    openFromComponent(): void {
-      //
-    }
+    openFromComponent(): void {}
   }
 
   beforeEach(() => {

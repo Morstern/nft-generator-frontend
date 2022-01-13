@@ -1,0 +1,25 @@
+<div class="remove-layer-item-dialog">
+  <h1 mat-dialog-title>Remove layer</h1>
+  <div mat-dialog-content class="mat-typography">
+    <p>
+      Are you sure that you want to remove layer named:
+      <b>{{ this.data.previewLayerItem.name }}</b>
+    </p>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="closeDialog()"
+      class="remove-layer-item-dialog__cancel-button"
+    >
+      Cancel
+    </button>
+    <button
+      mat-button
+      (click)="removePreviewLayerItemAndCloseDialog()"
+      class="remove-layer-item-dialog__remove-button"
+    >
+      Remove
+    </button>
+  </div>
+</div>

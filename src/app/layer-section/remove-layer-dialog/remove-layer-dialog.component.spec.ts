@@ -4,8 +4,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { LayerService } from '@services/common/layer-service/layer.service';
 import { PreviewLayer } from '@common/tos/preview-layer';
+import { LayerService } from '@services/common/layer-service/layer.service';
 import { RemoveLayerDialogComponent } from './remove-layer-dialog.component';
 
 describe('RemoveLayerDialogComponent', () => {
@@ -21,15 +21,11 @@ describe('RemoveLayerDialogComponent', () => {
   };
 
   class MOCK_MAT_DIALOG_REF {
-    close(): void {
-      //
-    }
+    close(): void {}
   }
 
   class MOCK_LAYER_SERVICE {
-    removeLayer(): void {
-      //
-    }
+    removeLayer(): void {}
   }
 
   beforeEach(async () => {
