@@ -36,14 +36,18 @@ div[role="tab"] {
   color: white;
   background-color: $secondary;
   color: black;
+
+  &:hover {
+    background-color: $primary;
+  }
 }
 
 div[role="tab"][class*="mat-tab-label-active"] {
   background-color: $teritary-1;
-}
 
-div[role="tab"]:hover {
-  background-color: $primary;
+  &:hover {
+    background-color: $teritary-1;
+  }
 }
 
 .mat-expansion-panel-body {
