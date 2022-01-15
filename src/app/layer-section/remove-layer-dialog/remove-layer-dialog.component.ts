@@ -6,14 +6,12 @@ import { LayerService } from '@services/common/layer-service/layer.service';
   selector: 'app-remove-layer-dialog',
   templateUrl: './remove-layer-dialog.component.html',
 })
-export class RemoveLayerDialogComponent implements OnInit {
+export class RemoveLayerDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<RemoveLayerDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private layerService: LayerService
   ) {}
-
-  ngOnInit(): void {}
 
   closeDialog(): void {
     this.dialogRef.close();

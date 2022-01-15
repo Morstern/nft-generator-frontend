@@ -7,12 +7,11 @@ import { RemoveLayerItemDialogComponent } from 'app/layer-section/remove-layer-i
   selector: 'app-layer-item',
   templateUrl: './layer-item.component.html',
 })
-export class LayerItemComponent implements OnInit {
+export class LayerItemComponent {
   @Input() previewLayerItem: PreviewLayerItem;
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
 
   openRemoveLayerItemDialog($event: any): void {
     $event.stopPropagation();

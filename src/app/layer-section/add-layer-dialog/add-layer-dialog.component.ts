@@ -8,7 +8,7 @@ import { NotificationService } from '@services/common/notification-service/notif
   selector: 'app-add-layer-dialog',
   templateUrl: './add-layer-dialog.component.html',
 })
-export class AddLayerDialogComponent implements OnInit {
+export class AddLayerDialogComponent{
   newLayer: string = '';
 
   constructor(
@@ -18,7 +18,6 @@ export class AddLayerDialogComponent implements OnInit {
     private notificationService: NotificationService
   ) {}
 
-  ngOnInit(): void {}
 
   closeDialog(): void {
     this.dialogRef.close();

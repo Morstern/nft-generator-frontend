@@ -7,15 +7,13 @@ import { NotificationService } from '@services/common/notification-service/notif
   selector: 'app-remove-layer-item-dialog',
   templateUrl: './remove-layer-item-dialog.component.html',
 })
-export class RemoveLayerItemDialogComponent implements OnInit {
+export class RemoveLayerItemDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<RemoveLayerItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private layerService: LayerService,
     private notificationService: NotificationService
   ) {}
-
-  ngOnInit(): void {}
 
   closeDialog(): void {
     this.dialogRef.close();

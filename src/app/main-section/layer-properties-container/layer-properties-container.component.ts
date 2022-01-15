@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-layer-properties-container',
   templateUrl: './layer-properties-container.component.html',
 })
-export class LayerPropertiesContainerComponent implements OnInit {
+export class LayerPropertiesContainerComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

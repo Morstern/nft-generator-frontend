@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-main-section',
   templateUrl: './main-section.component.html',
 })
-export class MainSectionComponent implements OnInit {
+export class MainSectionComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }
