@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ConvertMessageModule } from './pipe/convert-message-to-messages.pipe';
 
 @NgModule({
   declarations: [NotificationComponent],
@@ -22,6 +23,7 @@ import { NotificationComponent } from './components/notification/notification.co
     DragDropModule,
     MatTabsModule,
     MatSnackBarModule,
+    ConvertMessageModule,
   ],
   exports: [
     MatButtonModule,

@@ -26,6 +26,11 @@
     >
   </div>
   <div class="notification__body-container">
-    <span class="notification__message">{{ notification.message }}</span>
+    <span
+      *ngFor="let message of notification.message | convertMessageToMessages"
+      class="notification__message"
+    >
+      {{ message }}
+    </span>
   </div>
 </div>

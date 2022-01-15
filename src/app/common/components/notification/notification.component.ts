@@ -33,9 +33,8 @@ export class NotificationComponent implements OnInit {
       [this.notificationType.WARNING]: 'Warning',
       [this.notificationType.INFO]: 'Info',
     };
-
-    return defaultHeaders[
-      this.notification.notificationType as NotificationType
-    ];
+    return this.notification.header === undefined
+      ? defaultHeaders[this.notification.notificationType as NotificationType]
+      : this.notification.header;
   }
 }

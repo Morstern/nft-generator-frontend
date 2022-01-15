@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { LayerService } from '@services/common/layer-service/layer.service';
+import { NotificationService } from '@services/common/notification-service/notification.service';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 import { LayerComponent } from './layer.component';
 
@@ -22,6 +23,11 @@ describe('LayerComponent', () => {
 
   class MOCK_LAYER_SERVICE {
     updateLayer(layer: PreviewLayer): void {}
+    updatePreviewLayerItems(): void {}
+  }
+
+  class MOCK_NOTIFICATION_SERVICE {
+    warning() {}
   }
 
   beforeEach(async () => {
@@ -30,6 +36,7 @@ describe('LayerComponent', () => {
       providers: [
         { provide: MatDialog, useClass: MOCK_MAT_DIALOG },
         { provide: LayerService, useClass: MOCK_LAYER_SERVICE },
+        { provide: NotificationService, useClass: MOCK_NOTIFICATION_SERVICE },
       ],
     }).compileComponents();
   });
@@ -71,8 +78,6 @@ describe('LayerComponent', () => {
   });
 
   it(`should update layer's layerObjects when one file is selected`, () => {
-    //TODO: learn how to test functions inside subscribe, because we do not test if updateLayer was called
-
     component.layer = MOCK_PREVIEW_LAYER;
 
     let list = new DataTransfer();

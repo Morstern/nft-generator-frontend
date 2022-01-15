@@ -6,7 +6,7 @@ export enum NotificationType {
 }
 
 export interface Notification {
-  message: string;
+  message: string | Array<string>;
   notificationType?: NotificationType;
   header?: string;
   duration?: number;

@@ -15,6 +15,12 @@
     background-color: rgb(236, 196, 16);
   }
 
+  &__message {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
   &--info,
   &--warning {
     .notification__icon {
@@ -37,16 +43,18 @@
   &__header-container {
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   &__body-container {
     padding-top: 0.25rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
   }
 
   &__icon {
     margin-right: 0.25rem;
+    margin-left: 0.25rem;
   }
 
   &__header {
