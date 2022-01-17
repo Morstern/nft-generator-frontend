@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { PreviewLayer } from '@common/tos/preview-layer';
 import { PreviewLayerItem } from '@common/tos/preview-layer-item';
+import { toArray } from 'rxjs';
 import { LayerService } from './layer.service';
 
 describe('LayerService', () => {
@@ -67,5 +68,14 @@ describe('LayerService', () => {
       { layerName: 'a', previewLayerItems: [] },
       { layerName: 'b', previewLayerItems: [] },
     ]);
+  });
+
+  it('should remove layer item from previewLayer', (done) => {
+    service.layers = MOCK_LAYERS;
+
+    service.layers$.subscribe((layers) => {
+      expect(layers).toEqual(MOCK_LAYERS);
+      done();
+    });
   });
 });
