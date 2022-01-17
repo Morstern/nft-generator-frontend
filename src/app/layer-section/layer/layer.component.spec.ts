@@ -77,11 +77,31 @@ describe('LayerComponent', () => {
     });
   });
 
-  it(`should update layer's layerObjects when one file is selected`, () => {
+  it(`should create layer item when file with correct type is selected`, () => {
     component.layer = MOCK_PREVIEW_LAYER;
 
     let list = new DataTransfer();
-    let file = new File(['content'], 'filename.jpg');
+    let file = new File(['content'], 'filename.png', { type: 'image/png' });
+    list.items.add(file);
+
+    let myFileList = list.files;
+
+    fixture.detectChanges();
+
+    component.fileInput.nativeElement.files = myFileList;
+
+    component['_fileList$'].subscribe((element) => {
+      expect(element).toContain(file);
+    });
+
+    component.onFilesSelected();
+  });
+
+  it(`should add error to list when wrong type is selected`, () => {
+    component.layer = MOCK_PREVIEW_LAYER;
+
+    let list = new DataTransfer();
+    let file = new File(['content'], 'filename.png', { type: 'wrong/type' });
     list.items.add(file);
 
     let myFileList = list.files;
