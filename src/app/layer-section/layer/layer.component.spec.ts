@@ -22,7 +22,7 @@ describe('LayerComponent', () => {
   }
 
   class MOCK_LAYER_SERVICE {
-    updateLayer(layer: PreviewLayer): void {}
+    updateLayer(): void {}
     updatePreviewLayerItems(): void {}
   }
 

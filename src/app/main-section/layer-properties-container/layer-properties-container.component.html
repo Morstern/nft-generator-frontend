@@ -1,4 +1,12 @@
 <div class="layer-properties-container">
+  <mat-tab-group class="layer-properties-container__tabs">
+    <mat-tab
+      *ngFor="let layer of layers$ | async"
+      class="layer-properties__tab"
+      label="{{ layer.layerName }}"
+    >
+    </mat-tab>
+  </mat-tab-group>
   <div class="layer-properties-container__layer-properties">
     <app-layer-properties></app-layer-properties>
   </div>

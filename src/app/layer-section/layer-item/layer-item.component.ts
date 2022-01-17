@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PreviewLayerItem } from '@common/tos/preview-layer-item';
 import { RemoveLayerItemDialogComponent } from 'app/layer-section/remove-layer-item-dialog/remove-layer-item-dialog.component';

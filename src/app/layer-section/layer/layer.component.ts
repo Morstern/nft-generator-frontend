@@ -5,7 +5,7 @@ import { PreviewLayerItem } from '@common/tos/preview-layer-item';
 import { LayerService } from '@services/common/layer-service/layer.service';
 import { NotificationService } from '@services/common/notification-service/notification.service';
 import { SafeUnsubscribe } from 'app/common/utils/SafeUnsubscribe';
-import { concatMap, mergeAll, mergeMap, Subject, takeUntil } from 'rxjs';
+import { concatMap, Subject, takeUntil } from 'rxjs';
 import { FileTypeEnum } from '../../common/enums/file-type-enum';
 import { RemoveLayerDialogComponent } from '../remove-layer-dialog/remove-layer-dialog.component';
 
