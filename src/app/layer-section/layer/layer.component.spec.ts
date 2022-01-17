@@ -77,7 +77,7 @@ describe('LayerComponent', () => {
     });
   });
 
-  it(`should create layer item when file with correct type is selected`, () => {
+  it(`should create layer item when file with correct type is selected`, (done) => {
     component.layer = MOCK_PREVIEW_LAYER;
 
     let list = new DataTransfer();
@@ -92,12 +92,13 @@ describe('LayerComponent', () => {
 
     component['_fileList$'].subscribe((element) => {
       expect(element).toContain(file);
+      done();
     });
 
     component.onFilesSelected();
   });
 
-  it(`should add error to list when wrong type is selected`, () => {
+  it(`should add error to list when wrong type is selected`, (done) => {
     component.layer = MOCK_PREVIEW_LAYER;
 
     let list = new DataTransfer();
@@ -112,6 +113,7 @@ describe('LayerComponent', () => {
 
     component['_fileList$'].subscribe((element) => {
       expect(element).toContain(file);
+      done();
     });
 
     component.onFilesSelected();
