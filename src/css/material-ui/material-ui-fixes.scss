@@ -61,6 +61,14 @@ div[role="tab"][class*="mat-tab-label-active"] {
     padding: 16px 24px !important;
   }
 
+  & > div:not(:last-child)::after {
+    content: " ";
+    display: block;
+    height: 0.5rem;
+    width: 100%;
+    border-bottom: $teritary-1 1px solid;
+  }
+
   & > div:not(:last-child) {
     margin-bottom: 0.5rem;
   }
